@@ -17,24 +17,24 @@ PrePathData.CURRENCY_ICON = 7195171
 PrePathData.INTERVAL = 600
 
 PrePathData.RARES = {
-    { criteriaID=105744, vignetteID=7007,  name={ru="Красноглаз Черепоглод", en="Redeye the Skullchewer", de="Rotauge der Schädelbeißer", zh="啃颅者・红眼"} },
-    { criteriaID=105729, vignetteID=7043,  name={ru="Т'аавихан Освобожденный", en="T'aavihan the Unbound", de="T'aavihan der Ungebundene", zh="解缚者・塔阿维汉"} },
-    { criteriaID=105732, vignetteID=6995,  name={ru="Скат Гнили", en="Ray of Putrescence", de="Fäulnisstrahl", zh="腐秽之辉"} },
-    { criteriaID=105736, vignetteID=6997,  name={ru="Икс Кровопадший", en="Ix the Bloodfallen", de="Ix der Blutgefallene", zh="血陨者 伊克斯"} },
-    { criteriaID=105739, vignetteID=6998,  name={ru="Командир Икс'ваарта", en="Commander Ix'vaarha", de="Kommandant Ix'vaarha", zh="指挥官 伊克斯瓦尔哈"} },
-    { criteriaID=105742, vignetteID=7004,  name={ru="Шарфади Бастион Ночи", en="Sharfadi, Bulwark of the Night", de="Sharfadi, Bollwerk der Nacht", zh="夜之壁垒・沙法迪"} },
-    { criteriaID=105745, vignetteID=7001,  name={ru="Из'Хаадош Лиминал", en="Ez'Haadosh the Liminality", de="Ez'Haadosh die Liminalität", zh="埃兹哈多什・临界"} },
-    { criteriaID=105727, vignetteID=6755,  name={ru="Берг Чаробой", en="Berg the Spellfist", de="Berg die Zauberfaust", zh="咒拳师伯格"} },
-    { criteriaID=105730, vignetteID=6761,  name={ru="Глашатай сумрака Корла", en="Corla, Herald of Twilight", de="Corla, Botin des Zwielichts", zh="柯尔拉-暮光之兆"} },
-    { criteriaID=105733, vignetteID=6988,  name={ru="Ревнительница Бездны Девинда", en="Void Zealot Devinda", de="Leerenzelotin Devinda", zh="虚空狂热者・德文达"} },
-    { criteriaID=105737, vignetteID=6994,  name={ru="Азира Убийца Зари", en="Asira Dawnslayer", de="Asira Dämmerschlächter", zh="埃希拉-黎明克星"} },
-    { criteriaID=105740, vignetteID=6996,  name={ru="Архиепископ Бенедикт", en="Archbishop Benedictus", de="Erzbischof Benedictus", zh="大主教本尼迪塔斯"} },
-    { criteriaID=105743, vignetteID=7008,  name={ru="Недранд Глазоед", en="Nedrand the Eyegorger", de="Nedrand der Augenschlinger", zh="噬眼者・内德兰"} },
-    { criteriaID=105728, vignetteID=7042,  name={ru="Палач Линтельма", en="Executioner Lynthelma", de="Scharfrichterin Lynthelma", zh="刽子手 林塞尔玛"} },
-    { criteriaID=105731, vignetteID=7005,  name={ru="Густаван Глашатай Финала", en="Gustavan, Herald of the End", de="Gustavan, Herold des Untergangs", zh="终末使者 古斯塔万"} },
-    { criteriaID=105734, vignetteID=7009,  name={ru="Коготь Бездны – проклинарий", en="Voidclaw Hexathor", de="Leerenklaue Hexathor", zh="虚空之爪・赫克萨索尔"} },
-    { criteriaID=105738, vignetteID=7006,  name={ru="Зеркалвайз", en="Mirrorvise", de="Spiegelzwicker", zh="镜钳"} },
-    { criteriaID=105741, vignetteID=7003,  name={ru="Салигрум Наблюдатель", en="Saligrum the Observer", de="Saligrum der Beobachter", zh="观察者・萨利格鲁姆"} },
+    { criteriaID=105744, vignetteID=7007,  name={ru="Красноглаз Черепоглод", en="Redeye the Skullchewer", de="Rotauge der Schädelbeißer", zh="啃颅者・红眼"}, x=0.650, y=0.526 },
+    { criteriaID=105729, vignetteID=7043,  name={ru="Т'аавихан Освобожденный", en="T'aavihan the Unbound", de="T'aavihan der Ungebundene", zh="解缚者・塔阿维汉"}, x=0.576, y=0.756 },
+    { criteriaID=105732, vignetteID=6995,  name={ru="Скат Гнили", en="Ray of Putrescence", de="Fäulnisstrahl", zh="腐秽之辉"}, x=0.710, y=0.299 },
+    { criteriaID=105736, vignetteID=6997,  name={ru="Икс Кровопадший", en="Ix the Bloodfallen", de="Ix der Blutgefallene", zh="血陨者 伊克斯"}, x=0.467, y=0.252 },
+    { criteriaID=105739, vignetteID=6998,  name={ru="Командир Икс'ваарта", en="Commander Ix'vaarha", de="Kommandant Ix'vaarha", zh="指挥官 伊克斯瓦尔哈"}, x=0.452, y=0.488 },
+    { criteriaID=105742, vignetteID=7004,  name={ru="Шарфади Бастион Ночи", en="Sharfadi, Bulwark of the Night", de="Sharfadi, Bollwerk der Nacht", zh="夜之壁垒・沙法迪"}, x=0.418, y=0.165 },
+    { criteriaID=105745, vignetteID=7001,  name={ru="Из'Хаадош Лиминал", en="Ez'Haadosh the Liminality", de="Ez'Haadosh die Liminalität", zh="埃兹哈多什・临界"}, x=0.652, y=0.522 },
+    { criteriaID=105727, vignetteID=6755,  name={ru="Берг Чаробой", en="Berg the Spellfist", de="Berg die Zauberfaust", zh="咒拳师伯格"}, x=0.576, y=0.756 },
+    { criteriaID=105730, vignetteID=6761,  name={ru="Глашатай сумрака Корла", en="Corla, Herald of Twilight", de="Corla, Botin des Zwielichts", zh="柯尔拉-暮光之兆"}, x=0.712, y=0.299 },
+    { criteriaID=105733, vignetteID=6988,  name={ru="Ревнительница Бездны Девинда", en="Void Zealot Devinda", de="Leerenzelotin Devinda", zh="虚空狂热者・德文达"}, x=0.468, y=0.248 },
+    { criteriaID=105737, vignetteID=6994,  name={ru="Азира Убийца Зари", en="Asira Dawnslayer", de="Asira Dämmerschlächter", zh="埃希拉-黎明克星"}, x=0.452, y=0.492 },
+    { criteriaID=105740, vignetteID=6996,  name={ru="Архиепископ Бенедикт", en="Archbishop Benedictus", de="Erzbischof Benedictus", zh="大主教本尼迪塔斯"}, x=0.426, y=0.176 },
+    { criteriaID=105743, vignetteID=7008,  name={ru="Недранд Глазоед", en="Nedrand the Eyegorger", de="Nedrand der Augenschlinger", zh="噬眼者・内德兰"}, x=0.654, y=0.530 },
+    { criteriaID=105728, vignetteID=7042,  name={ru="Палач Линтельма", en="Executioner Lynthelma", de="Scharfrichterin Lynthelma", zh="刽子手 林塞尔玛"}, x=0.576, y=0.756 },
+    { criteriaID=105731, vignetteID=7005,  name={ru="Густаван Глашатай Финала", en="Gustavan, Herald of the End", de="Gustavan, Herold des Untergangs", zh="终末使者 古斯塔万"}, x=0.712, y=0.316 },
+    { criteriaID=105734, vignetteID=7009,  name={ru="Коготь Бездны – проклинарий", en="Voidclaw Hexathor", de="Leerenklaue Hexathor", zh="虚空之爪・赫克萨索尔"}, x=0.466, y=0.254 },
+    { criteriaID=105738, vignetteID=7006,  name={ru="Зеркалвайз", en="Mirrorvise", de="Spiegelzwicker", zh="镜钳"}, x=0.452, y=0.490 },
+    { criteriaID=105741, vignetteID=7003,  name={ru="Салигрум Наблюдатель", en="Saligrum the Observer", de="Saligrum der Beobachter", zh="观察者・萨利格鲁姆"}, x=0.426, y=0.176 },
     { criteriaID=109583, name={ru="Глас Затмения", en="Voice of the Eclipse", de="Stimme der Finsternis", zh="蚀之音"}, noTimer=true },
 }
 
@@ -135,13 +135,13 @@ button:SetScript("OnDragStart", button.StartMoving)
 button:SetScript("OnDragStop", button.StopMovingOrSizing)
 button.text = button:CreateFontString(nil,"OVERLAY","GameFontNormal")
 button.text:SetPoint("CENTER")
-button.text:SetText("Pre-Path")
+button.text:SetText("Pre-Patch")
 
 ------------------------------------------------------------
 -- MAIN FRAME
 ------------------------------------------------------------
 local frame = CreateFrame("Frame", "PrePathMainFrame", UIParent, "BackdropTemplate")
-frame:SetSize(430, 480)
+frame:SetSize(390, 480)
 frame:SetPoint("CENTER")
 frame:SetBackdrop({ bgFile="Interface/Tooltips/UI-Tooltip-Background" })
 frame:SetBackdropColor(0,0,0,0.92)
@@ -177,14 +177,45 @@ local yOffset = -50
 for index, data in ipairs(PrePathData.RARES) do
     local row = CreateFrame("Frame", nil, frame)
     row:SetSize(390, 20)
-    row:SetPoint("TOPLEFT",20,yOffset)
+    row:SetPoint("TOPLEFT", 20, yOffset)
+
     row.name = row:CreateFontString(nil,"OVERLAY","GameFontNormal")
     row.name:SetPoint("LEFT")
+
+row.mapButton = CreateFrame("Button", nil, row, "UIPanelButtonTemplate")
+row.mapButton:SetSize(50, 18)
+row.mapButton:SetPoint("LEFT", row.name, "RIGHT", 8, 0)
+row.mapButton:SetText("Map")
+row.mapButton:SetScript("OnClick", function()
+    local r = PrePathData.RARES[index]
+    if not r then return end
+
+    local mapID = r.mapID or PrePathData.MAP_ID
+    local x = r.x
+    local y = r.y
+
+    if not x or not y then
+        print("|cffFF0000PrePath|r: Coordinates missing for "..(r.name[GetLocaleString()] or "unknown"))
+        return
+    end
+
+    local point = UiMapPoint.CreateFromCoordinates(mapID, x, y)
+    if C_Map and C_Map.SetUserWaypoint then
+        C_Map.SetUserWaypoint(point)
+    end
+
+    if C_SuperTrack and C_SuperTrack.SetSuperTrackedUserWaypoint then
+        C_SuperTrack.SetSuperTrackedUserWaypoint(true)
+    end
+end)
+
     row.timer = row:CreateFontString(nil,"OVERLAY","GameFontNormal")
-    row.timer:SetPoint("RIGHT")
+    row.timer:SetPoint("LEFT", row.mapButton, "RIGHT", 8, 0)
+
     PrePathFrame.rows[index] = row
     yOffset = yOffset - 22
 end
+
 
 ------------------------------------------------------------
 -- UPDATE ROWS
@@ -193,7 +224,6 @@ function PrePathFrame:UpdateRows()
     for index, row in ipairs(self.rows) do
         local data = PrePathData.RARES[index]
 
-        -- COLOR
         if index == self.activeIndex then
             row.name:SetTextColor(1,1,0)
         elseif self.criteriaCompleted[data.criteriaID] then
@@ -202,7 +232,6 @@ function PrePathFrame:UpdateRows()
             row.name:SetTextColor(1,1,1)
         end
 
-        -- TIMER
         if data.noTimer then
             row.timer:SetText("")
         elseif index == self.activeIndex then
@@ -210,14 +239,12 @@ function PrePathFrame:UpdateRows()
         elseif self.cycleStartTime and self.activeIndex then
             local steps = 0
 
-            -- считаем только редких с таймером
             local i = self.activeIndex
             while i ~= index do
                 i = i + 1
                 if i > #PrePathData.RARES then
                     i = 1
                 end
-
                 if not PrePathData.RARES[i].noTimer then
                     steps = steps + 1
                 end
@@ -232,6 +259,7 @@ function PrePathFrame:UpdateRows()
         row.name:SetText(data.name[GetLocaleString()])
     end
 end
+
 
 ------------------------------------------------------------
 -- EVENTS
