@@ -11,6 +11,8 @@ local LOCALE = GetLocale()
 local function GetLocalizedName(rare)
     if LOCALE == "ruRU" and rare.name.ru then
         return rare.name.ru
+    elseif LOCALE == "deDE" and rare.name.de then
+        return rare.name.de
     end
     return rare.name.en
 end
@@ -22,25 +24,25 @@ PreData = {}
 PreData.MAP_ID = 241
 
 PreData.RARES = {
-    { vignetteID=7007, name={ru="Красноглаз Черепоглод",en="Redeye the Skullchewer"} },
-    { vignetteID=7043, name={ru="Т'аавихан Освобожденный",en="T'aavihan the Unbound"} },
-    { vignetteID=6995, name={ru="Скат Гнили",en="Ray of Putrescence"} },
-    { vignetteID=6997, name={ru="Икс Кровопадший",en="Ix the Bloodfallen"} },
-    { vignetteID=6998, name={ru="Командир Икс'ваарта",en="Commander Ix'vaarha"} },
-    { vignetteID=7004, name={ru="Шарфади Бастион Ночи",en="Sharfadi, Bulwark of the Night"} },
-    { vignetteID=7001, name={ru="Из'Хаадош Лиминал",en="Ez'Haadosh the Liminality"} },
-    { vignetteID=6755, name={ru="Берг Чаробой",en="Berg the Spellfist"} },
-    { vignetteID=6761, name={ru="Глашатай сумрака Корла",en="Corla, Herald of Twilight"} },
-    { vignetteID=6988, name={ru="Ревнительница Бездны Девинда",en="Void Zealot Devinda"} },
-    { vignetteID=6994, name={ru="Азира Убийца Зари",en="Asira Dawnslayer"} },
-    { vignetteID=6996, name={ru="Архиепископ Бенедикт",en="Archbishop Benedictus"} },
-    { vignetteID=7008, name={ru="Недранд Глазоед",en="Nedrand the Eyegorger"} },
-    { vignetteID=7042, name={ru="Палач Линтельма",en="Executioner Lynthelma"} },
-    { vignetteID=7005, name={ru="Густаван Глашатай Финала",en="Gustavan, Herald of the End"} },
-    { vignetteID=7009, name={ru="Коготь Бездны – проклинарий",en="Voidclaw Hexathor"} },
-    { vignetteID=7006, name={ru="Зеркалвайз",en="Mirrorvise"} },
-    { vignetteID=7003, name={ru="Салигрум Наблюдатель",en="Saligrum the Observer"} },
-    { vignetteID=7340, name={ru="Глас Затмения",en="Voice of the Eclipse"} },
+    { vignetteID=7007, name={ru="Красноглаз Черепоглод",en="Redeye the Skullchewer",de="Rotauge der Schädelbeißer"} },
+    { vignetteID=7043, name={ru="Т'аавихан Освобожденный",en="T'aavihan the Unbound",de="T'aavihan der Ungebundene"} },
+    { vignetteID=6995, name={ru="Скат Гнили",en="Ray of Putrescence",de="Fäulnisstrahl"} },
+    { vignetteID=6997, name={ru="Икс Кровопадший",en="Ix the Bloodfallen",de="Ix der Blutgefallene"} },
+    { vignetteID=6998, name={ru="Командир Икс'ваарта",en="Commander Ix'vaarha",de="Kommandant Ix'vaarha"} },
+    { vignetteID=7004, name={ru="Шарфади Бастион Ночи",en="Sharfadi, Bulwark of the Night",de="Sharfadi, Bollwerk der Nacht"} },
+    { vignetteID=7001, name={ru="Из'Хаадош Лиминал",en="Ez'Haadosh the Liminality",de="Ez'Haadosh die Liminalität"} },
+    { vignetteID=6755, name={ru="Берг Чаробой",en="Berg the Spellfist",de="Berg die Zauberfaust"} },
+    { vignetteID=6761, name={ru="Глашатай сумрака Корла",en="Corla, Herald of Twilight",de="Corla, Botin des Zwielichts"} },
+    { vignetteID=6988, name={ru="Ревнительница Бездны Девинда",en="Void Zealot Devinda",de="Leerenzelotin Devinda"} },
+    { vignetteID=6994, name={ru="Азира Убийца Зари",en="Asira Dawnslayer",de="Asira Dämmerschlächter"} },
+    { vignetteID=6996, name={ru="Архиепископ Бенедикт",en="Archbishop Benedictus",de="Erzbischof Benedictus"} },
+    { vignetteID=7008, name={ru="Недранд Глазоед",en="Nedrand the Eyegorger",de="Nedrand der Augenschlinger"} },
+    { vignetteID=7042, name={ru="Палач Линтельма",en="Executioner Lynthelma",de="Scharfrichterin Lynthelma"} },
+    { vignetteID=7005, name={ru="Густаван Глашатай Финала",en="Gustavan, Herald of the End",de="Gustavan, Herold des Untergangs"} },
+    { vignetteID=7009, name={ru="Коготь Бездны – проклинарий",en="Voidclaw Hexathor",de="Leerenklaue Hexathor"} },
+    { vignetteID=7006, name={ru="Зеркалвайз",en="Mirrorvise",de="Spiegelzwicker"} },
+    { vignetteID=7003, name={ru="Салигрум Наблюдатель",en="Saligrum the Observer",de="Saligrum der Beobachter"} },
+    { vignetteID=7340, name={ru="Глас Затмения",en="Voice of the Eclipse",de="Stimme der Finsternis"} },
 }
 
 ------------------------------------------------------------
@@ -125,3 +127,4 @@ ADDON:RegisterEvent("VIGNETTE_MINIMAP_UPDATED")
 ADDON:SetScript("OnEvent", function()
     ScanVignettes()
 end)
+
