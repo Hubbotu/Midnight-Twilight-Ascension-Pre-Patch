@@ -36,6 +36,7 @@ PrePathData.RARES = {
     { criteriaID=105738, vignetteID=7006,  name={ru="Зеркалвайз", en="Mirrorvise", de="Spiegelzwicker", zh="镜影魔"} },
     { criteriaID=105741, vignetteID=7003,  name={ru="Салигрум Наблюдатель", en="Saligrum the Observer", de="Saligrum der Beobachter", zh="观察者萨利格鲁姆"} },
     { criteriaID=109583, name={ru="Глас Затмения", en="Voice of the Eclipse", de="Stimme der Finsternis", zh="蚀变之声"}, noTimer=true },
+
 }
 
 PrePathData.CHAT_TRIGGERS = {
@@ -135,13 +136,13 @@ button:SetScript("OnDragStart", button.StartMoving)
 button:SetScript("OnDragStop", button.StopMovingOrSizing)
 button.text = button:CreateFontString(nil,"OVERLAY","GameFontNormal")
 button.text:SetPoint("CENTER")
-button.text:SetText("Pre-Path")
+button.text:SetText("Pre-Patch")
 
 ------------------------------------------------------------
 -- MAIN FRAME
 ------------------------------------------------------------
 local frame = CreateFrame("Frame", "PrePathMainFrame", UIParent, "BackdropTemplate")
-frame:SetSize(430, 480)
+frame:SetSize(390, 480)
 frame:SetPoint("CENTER")
 frame:SetBackdrop({ bgFile="Interface/Tooltips/UI-Tooltip-Background" })
 frame:SetBackdropColor(0,0,0,0.92)
@@ -177,14 +178,45 @@ local yOffset = -50
 for index, data in ipairs(PrePathData.RARES) do
     local row = CreateFrame("Frame", nil, frame)
     row:SetSize(390, 20)
-    row:SetPoint("TOPLEFT",20,yOffset)
+    row:SetPoint("TOPLEFT", 20, yOffset)
+
     row.name = row:CreateFontString(nil,"OVERLAY","GameFontNormal")
     row.name:SetPoint("LEFT")
+
+row.mapButton = CreateFrame("Button", nil, row, "UIPanelButtonTemplate")
+row.mapButton:SetSize(50, 18)
+row.mapButton:SetPoint("LEFT", row.name, "RIGHT", 8, 0)
+row.mapButton:SetText("Map")
+row.mapButton:SetScript("OnClick", function()
+    local r = PrePathData.RARES[index]
+    if not r then return end
+
+    local mapID = r.mapID or PrePathData.MAP_ID
+    local x = r.x
+    local y = r.y
+
+    if not x or not y then
+        print("|cffFF0000PrePath|r: Coordinates missing for "..(r.name[GetLocaleString()] or "unknown"))
+        return
+    end
+
+    local point = UiMapPoint.CreateFromCoordinates(mapID, x, y)
+    if C_Map and C_Map.SetUserWaypoint then
+        C_Map.SetUserWaypoint(point)
+    end
+
+    if C_SuperTrack and C_SuperTrack.SetSuperTrackedUserWaypoint then
+        C_SuperTrack.SetSuperTrackedUserWaypoint(true)
+    end
+end)
+
     row.timer = row:CreateFontString(nil,"OVERLAY","GameFontNormal")
-    row.timer:SetPoint("RIGHT")
+    row.timer:SetPoint("LEFT", row.mapButton, "RIGHT", 8, 0)
+
     PrePathFrame.rows[index] = row
     yOffset = yOffset - 22
 end
+
 
 ------------------------------------------------------------
 -- UPDATE ROWS
@@ -193,7 +225,6 @@ function PrePathFrame:UpdateRows()
     for index, row in ipairs(self.rows) do
         local data = PrePathData.RARES[index]
 
-        -- COLOR
         if index == self.activeIndex then
             row.name:SetTextColor(1,1,0)
         elseif self.criteriaCompleted[data.criteriaID] then
@@ -202,7 +233,6 @@ function PrePathFrame:UpdateRows()
             row.name:SetTextColor(1,1,1)
         end
 
-        -- TIMER
         if data.noTimer then
             row.timer:SetText("")
         elseif index == self.activeIndex then
@@ -210,14 +240,12 @@ function PrePathFrame:UpdateRows()
         elseif self.cycleStartTime and self.activeIndex then
             local steps = 0
 
-            -- считаем только редких с таймером
             local i = self.activeIndex
             while i ~= index do
                 i = i + 1
                 if i > #PrePathData.RARES then
                     i = 1
                 end
-
                 if not PrePathData.RARES[i].noTimer then
                     steps = steps + 1
                 end
@@ -232,6 +260,7 @@ function PrePathFrame:UpdateRows()
         row.name:SetText(data.name[GetLocaleString()])
     end
 end
+
 
 ------------------------------------------------------------
 -- EVENTS
