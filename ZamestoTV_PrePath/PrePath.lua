@@ -383,13 +383,14 @@ function PrePathFrame:StartPollingDelayed()
 end
 
 ------------------------------------------------------------
--- CHAT HANDLER (FIXED)
+-- CHAT HANDLER (CORRECT EVENT SIGNATURE)
 ------------------------------------------------------------
-function PrePathFrame:HandleChatEvent(event, text)
+function PrePathFrame:HandleChatText(text)
     if type(text) ~= "string" then return end
 
     local localeKey = GetLocaleString()
-    local triggers = PrePathData.CHAT_TRIGGERS[localeKey]
+    local triggers =
+        PrePathData.CHAT_TRIGGERS[localeKey]
         or PrePathData.CHAT_TRIGGERS.en
 
     if not triggers then return end
@@ -402,20 +403,20 @@ function PrePathFrame:HandleChatEvent(event, text)
     end
 end
 
-function PrePathFrame:CHAT_MSG_MONSTER_SAY(event, text)
-    self:HandleChatEvent(event, text)
+function PrePathFrame:CHAT_MSG_MONSTER_SAY(text)
+    self:HandleChatText(text)
 end
 
-function PrePathFrame:CHAT_MSG_MONSTER_YELL(event, text)
-    self:HandleChatEvent(event, text)
+function PrePathFrame:CHAT_MSG_MONSTER_YELL(text)
+    self:HandleChatText(text)
 end
 
-function PrePathFrame:CHAT_MSG_MONSTER_EMOTE(event, text)
-    self:HandleChatEvent(event, text)
+function PrePathFrame:CHAT_MSG_MONSTER_EMOTE(text)
+    self:HandleChatText(text)
 end
 
-function PrePathFrame:CHAT_MSG_RAID_BOSS_EMOTE(event, text)
-    self:HandleChatEvent(event, text)
+function PrePathFrame:CHAT_MSG_RAID_BOSS_EMOTE(text)
+    self:HandleChatText(text)
 end
 
 ------------------------------------------------------------
