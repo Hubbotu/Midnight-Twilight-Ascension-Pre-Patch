@@ -49,7 +49,7 @@ PrePathData.CHAT_TRIGGERS = {
         "Die Zwielichtklinge hat begonnen, weitere Truppen herbeizurufen. Besiegt ihre Ritualleiter!"
     },
     zh = {
-        "暮光之刃已经开始召唤援军。击败他们的仪式首领!！"
+        "暮光之刃已经开始召唤援军。击败他们的仪式首领！"
     },
     zhTW = {
         "暮光之刃已開始召喚更多兵力。擊敗他們的儀式首領！"
