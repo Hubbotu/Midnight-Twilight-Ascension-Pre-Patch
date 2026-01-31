@@ -210,7 +210,7 @@ row.mapButton:SetSize(50, 18)
 row.mapButton:SetPoint("LEFT", row.name, "RIGHT", 8, 0)
 row.mapButton:SetText("Map")
 row.mapButton:SetScript("OnClick", function()
-    local r = PrePathData.RARES[index]
+    local r = row.rareData
     if not r then return end
 
     local mapID = r.mapID or PrePathData.MAP_ID
@@ -235,10 +235,69 @@ end)
     row.timer = row:CreateFontString(nil,"OVERLAY","GameFontNormal")
     row.timer:SetPoint("LEFT", row.mapButton, "RIGHT", 8, 0)
 
+    -- Dynamic binding fields (updated during sorting)
+    row.rareData = nil
+    row.rareIndex = nil
+
     PrePathFrame.rows[index] = row
     yOffset = yOffset - 22
 end
 
+------------------------------------------------------------
+-- CALCULATE TIME TO SPAWN
+------------------------------------------------------------
+function PrePathFrame:GetTimeToSpawn(rareIndex)
+    local data = PrePathData.RARES[rareIndex]
+
+    if data.noTimer then
+        return 999999 -- noTimer rares always at the end
+    end
+
+    if rareIndex == self.activeIndex then
+        return -1 -- Active rare always first
+    end
+
+    if not self.cycleStartTime or not self.activeIndex then
+        return 999998 -- No cycle data available
+    end
+
+    -- Calculate steps from active to this rare
+    local steps = 0
+    local i = self.activeIndex
+    while i ~= rareIndex do
+        i = i + 1
+        if i > #PrePathData.RARES then
+            i = 1
+        end
+        if not PrePathData.RARES[i].noTimer then
+            steps = steps + 1
+        end
+    end
+
+    local targetTime = self.cycleStartTime + steps * PrePathData.INTERVAL
+    return targetTime - GetTime()
+end
+
+------------------------------------------------------------
+-- GET SORTED RARES
+------------------------------------------------------------
+function PrePathFrame:GetSortedRares()
+    local sorted = {}
+
+    for index, data in ipairs(PrePathData.RARES) do
+        table.insert(sorted, {
+            index = index,
+            data = data,
+            timeToSpawn = self:GetTimeToSpawn(index)
+        })
+    end
+
+    table.sort(sorted, function(a, b)
+        return a.timeToSpawn < b.timeToSpawn
+    end)
+
+    return sorted
+end
 
 ------------------------------------------------------------
 -- UPDATE ROWS
@@ -257,47 +316,55 @@ local ACTIVE_TEXT = {
 }
 
 function PrePathFrame:UpdateRows()
-    for index, row in ipairs(self.rows) do
-        local data = PrePathData.RARES[index]
-        local localeKey = GetLocaleString()
+    local sortedRares = self:GetSortedRares()
+    local localeKey = GetLocaleString()
 
-        if index == self.activeIndex then
-            row.name:SetTextColor(1,1,0)
-        elseif self.criteriaCompleted[data.criteriaID] then
-            row.name:SetTextColor(0,1,0)
-        else
-            row.name:SetTextColor(1,1,1)
-        end
+    for rowIndex, row in ipairs(self.rows) do
+        local rareInfo = sortedRares[rowIndex]
 
-        if data.noTimer then
-            row.timer:SetText("")
-        elseif index == self.activeIndex then
-            row.timer:SetText(ACTIVE_TEXT[localeKey] or ACTIVE_TEXT.en)
-        elseif self.cycleStartTime and self.activeIndex then
-            local steps = 0
-            local i = self.activeIndex
+        if rareInfo then
+            local data = rareInfo.data
+            local originalIndex = rareInfo.index
 
-            while i ~= index do
-                i = i + 1
-                if i > #PrePathData.RARES then
-                    i = 1
-                end
-                if not PrePathData.RARES[i].noTimer then
-                    steps = steps + 1
-                end
+            -- Update row data bindings
+            row.rareData = data
+            row.rareIndex = originalIndex
+
+            -- Set name color
+            if originalIndex == self.activeIndex then
+                row.name:SetTextColor(1, 1, 0) -- Yellow for active
+            elseif self.criteriaCompleted[data.criteriaID] then
+                row.name:SetTextColor(0, 1, 0) -- Green for completed
+            else
+                row.name:SetTextColor(1, 1, 1) -- White by default
             end
 
-            local targetTime = self.cycleStartTime + steps * PrePathData.INTERVAL
-            row.timer:SetText(FormatTime(targetTime - GetTime()))
-        else
-            row.timer:SetText("")
-        end
+            -- Set timer text and map button visibility
+            if data.noTimer then
+                row.timer:SetText("")
+                row.mapButton:Hide()
+            elseif originalIndex == self.activeIndex then
+                row.timer:SetText(ACTIVE_TEXT[localeKey] or ACTIVE_TEXT.en)
+                row.mapButton:Show()
+            elseif self.cycleStartTime and self.activeIndex then
+                local timeLeft = rareInfo.timeToSpawn
+                if timeLeft > 0 then
+                    row.timer:SetText(FormatTime(timeLeft))
+                else
+                    row.timer:SetText("")
+                end
+                row.mapButton:Show()
+            else
+                row.timer:SetText("")
+                row.mapButton:Show()
+            end
 
-        row.name:SetText(
-            data.name[localeKey]
-            or data.name.en
-            or ""
-        )
+            -- Set rare name
+            row.name:SetText(data.name[localeKey] or data.name.en or "")
+            row:Show()
+        else
+            row:Hide()
+        end
     end
 end
 
