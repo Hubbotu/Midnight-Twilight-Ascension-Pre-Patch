@@ -63,8 +63,11 @@ PrePathData.CHAT_TRIGGERS = {
     esMX = {
         "La Daga Crepuscular ha comenzado a invocar más fuerzas. ¡Derrota a los líderes del ritual!"
     },
+    itIT = {
+        "La Lama del Crepuscolo ha iniziato a evocare altre forze. Sconfiggi i capi dei rituali!"
+        },
     koKR = {
-        "황혼의 칼날단이 증원군을 소환하고 있습니다. 의식 지도자를 처치해야 합니다!"
+        "황혼의 칼날단이 증원군을 소환하고 있습니다. 의식 지도자를 처치해야 합니다!"    
     }
 }
 ------------------------------------------------------------
@@ -464,6 +467,7 @@ SlashCmdList["PREPATCH"] = function(message)
         frame:SetShown(not frame:IsShown())
     end
 end
+
 
 
 
