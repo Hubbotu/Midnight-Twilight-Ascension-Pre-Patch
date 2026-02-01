@@ -55,7 +55,7 @@ PrePathData.CHAT_TRIGGERS = {
         "暮光之刃已经开始召唤援军。击败他们的仪式首领！"
     },
     zhTW = {
-        "暮光之刃已經開始召喚援軍。擊敗他們的儀式首領！"
+        "暮光之刃已經開始召喚更多部隊。擊敗他們的儀式領袖！"
     },
     esES = {
         "La Hoja Crepuscular ha empezado a invocar más tropas. ¡Derrota a sus líderes rituales!"
@@ -534,6 +534,7 @@ SlashCmdList["PREPATCH"] = function(message)
         frame:SetShown(not frame:IsShown())
     end
 end
+
 
 
 
