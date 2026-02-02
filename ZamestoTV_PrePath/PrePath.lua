@@ -42,14 +42,14 @@ PrePathData.RARES = {
     { criteriaID=105729, vignetteID=7043,  name={ru="Т'аавихан Освобожденный", en="T'aavihan the Unbound", de="T'aavihan der Ungebundene", zh="无拘者塔维汉", zhTW="『無縛者』塔維罕", fr="T'aavihan le Délié", esES="T'aavihan el Desatado", esMX="T'aavihan, el Desatado", itIT="T'aavihan l'Indomabile", koKR="해방된 타비한"}, x=0.576, y=0.756 },
     { criteriaID=105732, vignetteID=6995,  name={ru="Скат Гнили", en="Ray of Putrescence", de="Fäulnisstrahl", zh="腐烂之鳐", zhTW="腐敗鰭刺", fr="Raie de putrescence", esES="Raya de putrescencia", esMX="Rayo de podredumbre", itIT="Razza della Putrescenza", koKR="부패의 가오리"}, x=0.710, y=0.299 },
     { criteriaID=105736, vignetteID=6997,  name={ru="Икс Кровопадший", en="Ix the Bloodfallen", de="Ix der Blutgefallene", zh="滴血者伊斯", zhTW="血殞蟲伊克斯", fr="Ix le Déchu sanglant", esES="Ix el Sangricaído", esMX="Ix, el Sangrecaído", itIT="Ix il Sangue Dannato", koKR="피의 몰락자 익스"}, x=0.467, y=0.252 },
-    { criteriaID=105739, vignetteID=6998,  name={ru="Командир Икс'ваарта", en="Commander Ix'vaarha", de="Kommandant Ix'vaarha", zh="指挥官伊斯瓦拉哈", zhTW="指挥官伊仕瓦哈", fr="Commandant Ix'vaarha", esES="Comandante Ix'vaarha", esMX="Comandante Ix'vaarha", itIT="Comandante Ix'vaarha", koKR="사령관 익스바르하"}, x=0.452, y=0.488 },
+    { criteriaID=105739, vignetteID=6998,  name={ru="Командир Икс'ваарта", en="Commander Ix'vaarha", de="Kommandant Ix'vaarha", zh="指挥官伊斯瓦拉哈", zhTW="指揮官伊仕瓦哈", fr="Commandant Ix'vaarha", esES="Comandante Ix'vaarha", esMX="Comandante Ix'vaarha", itIT="Comandante Ix'vaarha", koKR="사령관 익스바르하"}, x=0.452, y=0.488 },
     { criteriaID=105742, vignetteID=7004,  name={ru="Шарфади Бастион Ночи", en="Sharfadi, Bulwark of the Night", de="Sharfadi, Bollwerk der Nacht", zh="沙法蒂，玄夜壁垒", zhTW="『暗夜壁壘』煞法迪", fr="Sharfadi, Rempart de la Nuit", esES="Sharfadi, Baluarte Nocturno", esMX="Sharfadi, Bastión de la Noche", itIT="Sharfadi, Baluardo della Notte", koKR="밤의 보루 샤르파디"}, x=0.418, y=0.165 },
     { criteriaID=105745, vignetteID=7001,  name={ru="Из'Хаадош Лиминал", en="Ez'Haadosh the Liminality", de="Ez'Haadosh die Liminalität", zh="阈限者艾兹哈多沙", zhTW="『閾限者』艾茲哈德許", fr="Ez'Haadosh la Liminalité", esES="Ez'Haadosh del Umbral", esMX="Ez'Haadosh, la Liminalidad", itIT="Ez'haadosh la Soglia", koKR="경계의 에즈하도쉬"}, x=0.652, y=0.522 },
     { criteriaID=105727, vignetteID=6755,  name={ru="Берг Чаробой", en="Berg the Spellfist", de="Berg die Zauberfaust", zh="法术拳师贝格", zhTW="『法拳』柏格", fr="Berg le Sorcepoing", esES="Berg el Puñohechizo", esMX="Berg, el Puño Mágico", itIT="Berg il Pugnomagico", koKR="주문철권 베르그"}, x=0.576, y=0.756 },
     { criteriaID=105730, vignetteID=6761,  name={ru="Глашатай сумрака Корла", en="Corla, Herald of Twilight", de="Corla, Botin des Zwielichts", zh="柯尔拉，暮光之兆", zhTW="暮光信使柯爾菈", fr="Coria, héraut du Crépuscule", esES="Corla, Heraldo del Crepúsculo", esMX="Corla, Heraldo del Crepúsculo", itIT="Corla, l'Alfiera del Crepuscolo", koKR="황혼의 전령 코를라"}, x=0.712, y=0.299 },
     { criteriaID=105733, vignetteID=6988,  name={ru="Ревнительница Бездны Девинда", en="Void Zealot Devinda", de="Leerenzelotin Devinda", zh="虚空狂热者德文达", zhTW="虛無狂熱者戴雯妲", fr="Zélote du Vide Devinda", esES="Zelote del Vacío Devinda", esMX="Zelote del Vacío Devinda", itIT="Zelota del Vuoto Devinda", koKR="공허 광신도 데빈다"}, x=0.468, y=0.248 },
     { criteriaID=105737, vignetteID=6994,  name={ru="Азира Убийца Зари", en="Asira Dawnslayer", de="Asira Dämmerschlächter", zh="埃希拉·黎明克星", zhTW="阿希拉黎明殺戮者", fr="Asira Fauchelaube", esES="Asira Puñal del Alba", esMX="Asira Puñal del Alba", itIT="Asira Vesprorosso", koKR="아시라 돈슬레이어"}, x=0.452, y=0.492 },
-    { criteriaID=105740, vignetteID=6996,  name={ru="Архиепископ Бенедикт", en="Archbishop Benedictus", de="Erzbischof Benedictus", zh="大主教本尼迪타스", zhTW="大主教本尼迪塔斯", fr="Archevêque Benedictus", esES="Arzobispo Benedictus", esMX="Arzobispo Benedictus", itIT="Arcivescovo Benedictus", koKR="대주교 베네딕투스"}, x=0.426, y=0.176 },
+    { criteriaID=105740, vignetteID=6996,  name={ru="Архиепископ Бенедикт", en="Archbishop Benedictus", de="Erzbischof Benedictus", zh="大主教本尼迪塔斯", zhTW="大主教本尼迪塔斯", fr="Archevêque Benedictus", esES="Arzobispo Benedictus", esMX="Arzobispo Benedictus", itIT="Arcivescovo Benedictus", koKR="대주교 베네딕투스"}, x=0.426, y=0.176 },
     { criteriaID=105743, vignetteID=7008,  name={ru="Недранд Глазоед", en="Nedrand the Eyegorger", de="Nedrand der Augenschlinger", zh="凿目者内德兰德", zhTW="『食眼者』奈德倫", fr="Nedrand l'Énucléeur", esES="Nedrand el Devoraojos", esMX="Nedrand, el Sacaojos", itIT="Nedrand il Mangiaocchi", koKR="눈 포식자 네드란드"}, x=0.654, y=0.530 },
     { criteriaID=105728, vignetteID=7042,  name={ru="Палач Линтельма", en="Executioner Lynthelma", de="Scharfrichterin Lynthelma", zh="处决者林瑟尔玛", zhTW="處決者萊瑟瑪", fr="Exécuteur Lynthelma", esES="Verduga Lynthelma", esMX="Verduga Lynthelma", itIT="Lynthelma la Carnefice", koKR="집행자 린셀마"}, x=0.576, y=0.756 },
     { criteriaID=105731, vignetteID=7005,  name={ru="Густаван Глашатай Финала", en="Gustavan, Herald of the End", de="Gustavan, Herold des Untergangs", zh="古斯塔梵，终末使徒", zhTW="『末日使者』古斯塔凡", fr="Gustavan, Héraut de la fin", esES="Gustavan, Heraldo del Fin", esMX="Gustavan, Heraldo del Fin", itIT="Gustavan, Alfiere della Fine", koKR="최후의 전령 구스타반"}, x=0.712, y=0.316 },
@@ -60,16 +60,36 @@ PrePathData.RARES = {
 }
 
 PrePathData.CHAT_TRIGGERS = {
-    ru = { "Сектанты Сумеречного Клинка призывают подкрепление. Убейте предводителей ритуалистов!" },
-    en = { "The Twilight's Blade have begun summoning more forces. Defeat their ritual leaders!" },
-    de = { "Die Zwielichtklinge hat begonnen, weitere Truppen herbeizurufen. Besiegt ihre Ritualleiter!" },
-    fr = { "La Lame du Crépuscule commence à invoquer davantage de troupes. Éliminez les personnes qui dirigent le rituel !" },
-    zh = { "暮光之刃已经开始召唤援军。击败他们的仪式首领！" },
-    zhTW = { "暮光之刃已經開始召喚更多部隊。擊敗他們的儀式領袖！" },
-    esES = { "La Hoja Crepuscular ha empezado a invocar más tropas. ¡Derrota a sus líderes rituales!" },
-    esMX = { "La Daga Crepuscular ha comenzado a invocar más fuerzas. ¡Derrota a los líderes del ritual!" },
-    itIT = { "La Lama del Crepuscolo ha iniziato a evocare altre forze. Sconfiggi i capi dei rituali!" },
-    koKR = { "황혼의 칼날단이 증원군을 소환하고 있습니다. 의식 지도자를 처치해야 합니다!" }
+    ru = {
+        "Сектанты Сумеречного Клинка призывают подкрепление. Убейте предводителей ритуалистов!"
+    },
+    en = {
+        "The Twilight's Blade have begun summoning more forces. Defeat their ritual leaders!"
+    },
+    de = {
+        "Die Zwielichtklinge hat begonnen, weitere Truppen herbeizurufen. Besiegt ihre Ritualleiter!"
+    },
+    fr = {
+        "La Lame du Crépuscule commence à invoquer davantage de troupes. Éliminez les personnes qui dirigent le rituel !"
+    },
+    zh = {
+        "暮光之刃已经开始召唤援军。击败他们的仪式首领！"
+    },
+    zhTW = {
+        "暮光之刃已經開始召喚更多部隊。擊敗他們的儀式領袖！"
+    },
+    esES = {
+        "La Hoja Crepuscular ha empezado a invocar más tropas. ¡Derrota a sus líderes rituales!"
+    },
+    esMX = {
+        "La Daga Crepuscular ha comenzado a invocar más fuerzas. ¡Derrota a los líderes del ritual!"
+    },
+    itIT = {
+        "La Lama del Crepuscolo ha iniziato a evocare altre forze. Sconfiggi i capi dei rituali!"
+        },
+    koKR = {
+        "황혼의 칼날단이 증원군을 소환하고 있습니다. 의식 지도자를 처치해야 합니다!"    
+    }
 }
 
 ------------------------------------------------------------
