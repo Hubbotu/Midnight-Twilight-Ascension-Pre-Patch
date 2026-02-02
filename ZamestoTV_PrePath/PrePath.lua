@@ -421,20 +421,31 @@ for index, data in ipairs(PrePathData.RARES) do
 end
 
 ------------------------------------------------------------
--- LOGIC: CALCULATE
+-- CALCULATE TIME TO SPAWN
 ------------------------------------------------------------
 function PrePathFrame:GetTimeToSpawn(rareIndex)
     local data = PrePathData.RARES[rareIndex]
 
-    if data.noTimer then return 999999 end
-    if rareIndex == self.activeIndex then return -1 end
-    if not self.cycleStartTime or not self.activeIndex then return 999998 end
+    if data.noTimer then
+        return 999999 -- noTimer rares always at the end
+    end
 
+    if rareIndex == self.activeIndex then
+        return -1 -- Active rare always first
+    end
+
+    if not self.cycleStartTime or not self.activeIndex then
+        return 999998 -- No cycle data available
+    end
+
+    -- Calculate steps from active to this rare
     local steps = 0
     local i = self.activeIndex
     while i ~= rareIndex do
         i = i + 1
-        if i > #PrePathData.RARES then i = 1 end
+        if i > #PrePathData.RARES then
+            i = 1
+        end
         if not PrePathData.RARES[i].noTimer then
             steps = steps + 1
         end
@@ -442,6 +453,27 @@ function PrePathFrame:GetTimeToSpawn(rareIndex)
 
     local targetTime = self.cycleStartTime + steps * PrePathData.INTERVAL
     return targetTime - GetTime()
+end
+
+------------------------------------------------------------
+-- GET SORTED RARES
+------------------------------------------------------------
+function PrePathFrame:GetSortedRares()
+    local sorted = {}
+
+    for index, data in ipairs(PrePathData.RARES) do
+        table.insert(sorted, {
+            index = index,
+            data = data,
+            timeToSpawn = self:GetTimeToSpawn(index)
+        })
+    end
+
+    table.sort(sorted, function(a, b)
+        return a.timeToSpawn < b.timeToSpawn
+    end)
+
+    return sorted
 end
 
 ------------------------------------------------------------
@@ -454,39 +486,34 @@ local ACTIVE_TEXT = {
 }
 
 function PrePathFrame:UpdateRows()
+    local sortedRares = self:GetSortedRares()
     local localeKey = GetLocaleString()
 
-    local activeVignettes = {}
-    for _, guid in ipairs(C_VignetteInfo.GetVignettes()) do
-        local info = C_VignetteInfo.GetVignetteInfo(guid)
-        if info then
-            activeVignettes[info.vignetteID] = true
-        end
-    end
-
     for rowIndex, row in ipairs(self.rows) do
-        local data = PrePathData.RARES[rowIndex]
-        
-        if data then
+        local rareInfo = sortedRares[rowIndex]
+
+        if rareInfo then
+            local data = rareInfo.data
+            local originalIndex = rareInfo.index
+
+            -- Update row data bindings
             row.rareData = data
-            row.rareIndex = rowIndex
+            row.rareIndex = originalIndex
 
-            local isVignetteUp = activeVignettes[data.vignetteID]
-
-            if rowIndex == self.activeIndex or isVignetteUp then
-                row.name:SetTextColor(1, 1, 0)
+            if originalIndex == self.activeIndex then
+                row.name:SetTextColor(1, 1, 0) -- Yellow for active
             elseif self.criteriaCompleted[data.criteriaID] then
-                row.name:SetTextColor(0, 1, 0)
+                row.name:SetTextColor(0, 1, 0) -- Green for completed
             else
-                row.name:SetTextColor(1, 1, 1)
+                row.name:SetTextColor(1, 1, 1) -- White by default
             end
 
-            local timeToSpawn = self:GetTimeToSpawn(rowIndex)
+            local timeToSpawn = rareInfo.timeToSpawn
 
             if data.noTimer then
                 row.timer:SetText("")
                 row.mapButton:Hide()
-            elseif isVignetteUp or rowIndex == self.activeIndex then
+            elseif originalIndex == self.activeIndex then
                 row.timer:SetText(ACTIVE_TEXT[localeKey] or ACTIVE_TEXT.en)
                 row.mapButton:Show()
             elseif self.cycleStartTime and self.activeIndex and PrePathFrame.timersSynced then
