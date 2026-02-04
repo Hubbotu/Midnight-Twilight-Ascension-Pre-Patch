@@ -264,26 +264,33 @@ local endText = frame:CreateFontString(nil,"OVERLAY","GameFontNormal")
 endText:SetPoint("TOPRIGHT", -10, -10)
 
 ------------------------------------------------------------
--- UI PANEL (small floating panel — now only one button with currency)
+-- UI PANEL
 ------------------------------------------------------------
-local panelContainer = CreateFrame("Frame", "PrePathPanel", UIParent)  -- no BackdropTemplate
-panelContainer:SetSize(110, 22)   -- same size as the button
+local panelContainer = CreateFrame("Frame", "PrePathPanel", UIParent)
+panelContainer:SetSize(110, 22)
 panelContainer:SetPoint("CENTER", UIParent, "CENTER", 0, 220)
-panelContainer:SetMovable(true)
-panelContainer:EnableMouse(true)
-panelContainer:RegisterForDrag("LeftButton")
-panelContainer:SetScript("OnDragStart", panelContainer.StartMoving)
-panelContainer:SetScript("OnDragStop", panelContainer.StopMovingOrSizing)
+panelContainer:SetClampedToScreen(true)
 
 local toggleBtn = CreateFrame("Button", nil, panelContainer, "UIPanelButtonTemplate")
 toggleBtn:SetSize(110, 22)
-toggleBtn:SetPoint("TOP", 0, -6)
+toggleBtn:SetPoint("CENTER")
+toggleBtn:EnableMouse(true)
+
+toggleBtn:RegisterForDrag("LeftButton")
+toggleBtn:SetMovable(true)
+toggleBtn:SetClampedToScreen(true)
+
+toggleBtn:SetScript("OnDragStart", function(self)
+    self:StartMoving()
+end)
+
+toggleBtn:SetScript("OnDragStop", function(self)
+    self:StopMovingOrSizing()
+end)
 
 toggleBtn:SetScript("OnClick", function()
     frame:SetShown(not frame:IsShown())
 end)
-
--- We'll update both title and currency in the ticker loop
 
 ------------------------------------------------------------
 -- CONTROLS
