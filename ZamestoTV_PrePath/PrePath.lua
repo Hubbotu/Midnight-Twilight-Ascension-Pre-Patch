@@ -23,23 +23,23 @@ PrePathData.CURRENCY_ICON = 7195171
 PrePathData.INTERVAL = 300
 
 PrePathData.UI = {
-    Title   = { ru = "Пре-Патч",   en = "Pre-Patch" },
-    AutoMap = { ru = "Авто-метка", en = "Auto Map" },
-    Share   = { ru = "Поделиться", en = "Share" },
-    Hints   = { ru = "Тактика",    en = "Hints" },
-    Map     = { ru = "Метка",      en = "Map" },
-    Say     = { ru = "Сказать (/s)", en = "Say (/s)" },
-    General = { ru = "Общий (/1)",   en = "General (/1)" },
-    Party   = { ru = "Группа (/p)",  en = "Party (/p)" },
-    Raid    = { ru = "Рейд (/ra)",   en = "Raid (/ra)" },
-    Guild   = { ru = "Гильдия (/g)", en = "Guild (/g)" },
-    EndsIn  = { ru = "До конца: ",       en = "Ends in: " },
-    Waiting = { ru = "Ждем нового респа...", en = "Waiting for next spawn..." },
+    Title   = { ru="Пре-Патч", en="Pre-Patch", de="Pre-Patch", fr="Pré-patch", esES="Pre-parche", esMX="Pre-parche", itIT="Pre-patch", koKR="프리 패치", zh="前夕补丁", zhTW="前夕更新" },
+    AutoMap = { ru="Авто-метка", en="Auto Map", de="Auto-Markierung", fr="Marque auto", esES="Marcado automático", esMX="Marcado automático", itIT="Segnalazione automatica", koKR="자동 표시", zh="自动标记", zhTW="自動標記" },
+    Share   = { ru="Поделиться", en="Share", de="Teilen", fr="Partager", esES="Compartir", esMX="Compartir", itIT="Condividi", koKR="공유", zh="分享", zhTW="分享" },
+    Hints   = { ru="Тактика", en="Hints", de="Tipps", fr="Conseils", esES="Consejos", esMX="Consejos", itIT="Suggerimenti", koKR="공략", zh="提示", zhTW="提示" },
+    Map     = { ru="Метка", en="Map", de="Karte", fr="Carte", esES="Mapa", esMX="Mapa", itIT="Mappa", koKR="지도", zh="地图", zhTW="地圖" },
+    Say     = { ru="Сказать (/s)", en="Say (/s)", de="Sagen (/s)", fr="Dire (/s)", esES="Decir (/s)", esMX="Decir (/s)", itIT="Dire (/s)", koKR="말하기 (/s)", zh="说话 (/s)", zhTW="說話 (/s)" },
+    General = { ru="Общий (/1)", en="General (/1)", de="Allgemein (/1)", fr="Général (/1)", esES="General (/1)", esMX="General (/1)", itIT="Generale (/1)", koKR="일반 (/1)", zh="综合 (/1)", zhTW="綜合 (/1)" },
+    Party   = { ru="Группа (/p)", en="Party (/p)", de="Gruppe (/p)", fr="Groupe (/p)", esES="Grupo (/p)", esMX="Grupo (/p)", itIT="Gruppo (/p)", koKR="파티 (/p)", zh="队伍 (/p)", zhTW="隊伍 (/p)" },
+    Raid    = { ru="Рейд (/ra)", en="Raid (/ra)", de="Schlachtzug (/ra)", fr="Raid (/ra)", esES="Banda (/ra)", esMX="Banda (/ra)", itIT="Incursione (/ra)", koKR="공격대 (/ra)", zh="团队 (/ra)", zhTW="團隊 (/ra)" },
+    Guild   = { ru="Гильдия (/g)", en="Guild (/g)", de="Gilde (/g)", fr="Guilde (/g)", esES="Hermandad (/g)", esMX="Hermandad (/g)", itIT="Gilda (/g)", koKR="길드 (/g)", zh="公会 (/g)", zhTW="公會 (/g)" },
+    EndsIn  = { ru="До конца: ", en="Ends in: ", de="Endet in: ", fr="Se termine dans : ", esES="Termina en: ", esMX="Termina en: ", itIT="Termina tra: ", koKR="종료까지: ", zh="结束于：", zhTW="結束於：" },
+    Waiting = { ru="Ждем нового респа...", en="Waiting for next spawn...", de="Warten auf nächsten Spawn...", fr="En attente du prochain spawn...", esES="Esperando la siguiente aparición...", esMX="Esperando la siguiente aparición...", itIT="In attesa del prossimo spawn...", koKR="다음 생성 대기 중...", zh="等待下次刷新...", zhTW="等待下次刷新..." },
 }
 
 PrePathData.RARES = {
     { criteriaID=105744, vignetteID=7007,  name={ru="Красноглаз Черепоглод", en="Redeye the Skullchewer", de="Rotauge der Schädelbeißer", zh="嚼颅者赤目", zhTW="『嚼顱者』紅眼", fr="Yeux-Rouges, le Mâchonneur de crânes", esES="Ojorrojo el Masticacráneos", esMX="Ojorrojo, el Masticacráneos", itIT="Occhiorosso il Masticacrani", koKR="해골으적이 붉은눈"}, x=0.650, y=0.526 },
-    { criteriaID=105729, vignetteID=7043,  name={ru="Т'аавихан Освобожденный", en="T'aavihan the Unbound", de="T'aavihan der Ungebundene", zh="无拘者塔维汉", zhTW="『無縛者』塔維罕", fr="T'aavihan le Délié", esES="T'aavihan el Desatado", esMX="T'aavihan, el Desatado", itIT="T'aavihan l'Indomabile", koKR="해방된 타비한"}, x=0.576, y=0.756 },
+    { criteriaID=105729, vignetteID=7043,  name={ru="T'аавихан Освобожденный", en="T'aavihan the Unbound", de="T'aavihan der Ungebundene", zh="无拘者塔维汉", zhTW="『無縛者』塔維罕", fr="T'aavihan le Délié", esES="T'aavihan el Desatado", esMX="T'aavihan, el Desatado", itIT="T'aavihan l'Indomabile", koKR="해방된 타비한"}, x=0.576, y=0.756 },
     { criteriaID=105732, vignetteID=6995,  name={ru="Скат Гнили", en="Ray of Putrescence", de="Fäulnisstrahl", zh="腐烂之鳐", zhTW="腐敗鰭刺", fr="Raie de putrescence", esES="Raya de putrescencia", esMX="Rayo de podredumbre", itIT="Razza della Putrescenza", koKR="부패의 가오리"}, x=0.710, y=0.299 },
     { criteriaID=105736, vignetteID=6997,  name={ru="Икс Кровопадший", en="Ix the Bloodfallen", de="Ix der Blutgefallene", zh="滴血者伊斯", zhTW="血殞蟲伊克斯", fr="Ix le Déchu sanglant", esES="Ix el Sangricaído", esMX="Ix, el Sangrecaído", itIT="Ix il Sangue Dannato", koKR="피의 몰락자 익스"}, x=0.467, y=0.252 },
     { criteriaID=105739, vignetteID=6998,  name={ru="Командир Икс'ваарта", en="Commander Ix'vaarha", de="Kommandant Ix'vaarha", zh="指挥官伊斯瓦拉哈", zhTW="指揮官伊仕瓦哈", fr="Commandant Ix'vaarha", esES="Comandante Ix'vaarha", esMX="Comandante Ix'vaarha", itIT="Comandante Ix'vaarha", koKR="사령관 익스바르하"}, x=0.452, y=0.488 },
@@ -264,13 +264,11 @@ local endText = frame:CreateFontString(nil,"OVERLAY","GameFontNormal")
 endText:SetPoint("TOPRIGHT", -10, -10)
 
 ------------------------------------------------------------
--- UI PANEL
+-- UI PANEL (small floating panel — now only one button with currency)
 ------------------------------------------------------------
-local panelContainer = CreateFrame("Frame", "PrePathPanel", UIParent, "BackdropTemplate")
-panelContainer:SetSize(130, 90)
+local panelContainer = CreateFrame("Frame", "PrePathPanel", UIParent)  -- no BackdropTemplate
+panelContainer:SetSize(110, 22)   -- same size as the button
 panelContainer:SetPoint("CENTER", UIParent, "CENTER", 0, 220)
-panelContainer:SetBackdrop({ bgFile="Interface/Tooltips/UI-Tooltip-Background" })
-panelContainer:SetBackdropColor(0,0,0,0.85)
 panelContainer:SetMovable(true)
 panelContainer:EnableMouse(true)
 panelContainer:RegisterForDrag("LeftButton")
@@ -279,27 +277,13 @@ panelContainer:SetScript("OnDragStop", panelContainer.StopMovingOrSizing)
 
 local toggleBtn = CreateFrame("Button", nil, panelContainer, "UIPanelButtonTemplate")
 toggleBtn:SetSize(110, 22)
-toggleBtn:SetPoint("TOP", 0, -5)
-toggleBtn:SetText(GetUIText("Title"))
+toggleBtn:SetPoint("TOP", 0, -6)
+
 toggleBtn:SetScript("OnClick", function()
     frame:SetShown(not frame:IsShown())
 end)
 
-local miniShare = CreateFrame("Button", nil, panelContainer, "UIPanelButtonTemplate")
-miniShare:SetSize(110, 22)
-miniShare:SetPoint("TOP", toggleBtn, "BOTTOM", 0, -5)
-miniShare:SetText(GetUIText("Share"))
-miniShare:SetScript("OnClick", function()
-    PrePathFrame:ShareNextRare()
-end)
-
-local miniHints = CreateFrame("Button", nil, panelContainer, "UIPanelButtonTemplate")
-miniHints:SetSize(110, 22)
-miniHints:SetPoint("TOP", miniShare, "BOTTOM", 0, -5)
-miniHints:SetText(GetUIText("Hints"))
-miniHints:SetScript("OnClick", function()
-    PrePathFrame:ToggleHints()
-end)
+-- We'll update both title and currency in the ticker loop
 
 ------------------------------------------------------------
 -- CONTROLS
@@ -660,6 +644,10 @@ C_Timer.NewTicker(1, function()
     local currencyInfo = C_CurrencyInfo.GetCurrencyInfo(PrePathData.CURRENCY_ID)
     currencyText:SetText(currencyInfo and currencyInfo.quantity or 0)
 
+    -- Update mini-panel button with currency number
+    local qty = currencyInfo and currencyInfo.quantity or 0
+    toggleBtn:SetText(GetUIText("Title") .. "  " .. qty)
+
     local uiTextEnds = GetUIText("EndsIn")
     local uiTextWait = GetUIText("Waiting")
 
@@ -712,4 +700,5 @@ SlashCmdList["PREPATCH"] = function(message)
     else
         frame:SetShown(not frame:IsShown())
     end
+
 end
