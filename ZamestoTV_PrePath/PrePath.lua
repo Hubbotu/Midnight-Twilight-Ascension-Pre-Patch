@@ -264,12 +264,30 @@ local endText = frame:CreateFontString(nil,"OVERLAY","GameFontNormal")
 endText:SetPoint("TOPRIGHT", -10, -10)
 
 ------------------------------------------------------------
--- UI PANEL
+-- UI PANEL (draggable button + SavedVariables, WORKING)
 ------------------------------------------------------------
+PrePathDB = PrePathDB or {}
+
 local panelContainer = CreateFrame("Frame", "PrePathPanel", UIParent)
 panelContainer:SetSize(110, 22)
-panelContainer:SetPoint("CENTER", UIParent, "CENTER", 0, 220)
 panelContainer:SetClampedToScreen(true)
+panelContainer:SetMovable(true)
+
+-- restore position (CRITICAL PART)
+panelContainer:SetUserPlaced(false)
+panelContainer:ClearAllPoints()
+
+if PrePathDB.PanelPos then
+    panelContainer:SetPoint(
+        PrePathDB.PanelPos.point,
+        UIParent,
+        PrePathDB.PanelPos.relativePoint,
+        PrePathDB.PanelPos.xOfs,
+        PrePathDB.PanelPos.yOfs
+    )
+else
+    panelContainer:SetPoint("CENTER", UIParent, "CENTER", 0, 220)
+end
 
 local toggleBtn = CreateFrame("Button", nil, panelContainer, "UIPanelButtonTemplate")
 toggleBtn:SetSize(110, 22)
@@ -277,15 +295,20 @@ toggleBtn:SetPoint("CENTER")
 toggleBtn:EnableMouse(true)
 
 toggleBtn:RegisterForDrag("LeftButton")
-toggleBtn:SetMovable(true)
-toggleBtn:SetClampedToScreen(true)
-
 toggleBtn:SetScript("OnDragStart", function(self)
-    self:StartMoving()
+    panelContainer:StartMoving()
 end)
 
 toggleBtn:SetScript("OnDragStop", function(self)
-    self:StopMovingOrSizing()
+    panelContainer:StopMovingOrSizing()
+
+    local point, _, relativePoint, xOfs, yOfs = panelContainer:GetPoint()
+    PrePathDB.PanelPos = {
+        point = point,
+        relativePoint = relativePoint,
+        xOfs = xOfs,
+        yOfs = yOfs,
+    }
 end)
 
 toggleBtn:SetScript("OnClick", function()
