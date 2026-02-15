@@ -9,6 +9,7 @@ PrePathDB = PrePathDB or {}
 PrePathDB.AutoMap = PrePathDB.AutoMap or false
 PrePathDB.ChannelType = PrePathDB.ChannelType or "SAY"
 PrePathDB.ChannelID = PrePathDB.ChannelID or nil
+PrePathDB.Alarms = PrePathDB.Alarms or {}
 
 ------------------------------------------------------------
 -- DATA & LOCALIZATION
@@ -35,6 +36,10 @@ PrePathData.UI = {
     Guild   = { ru="Гильдия (/g)", en="Guild (/g)", de="Gilde (/g)", fr="Guilde (/g)", esES="Hermandad (/g)", esMX="Hermandad (/g)", itIT="Gilda (/g)", koKR="길드 (/g)", zh="公会 (/g)", zhTW="公會 (/g)" },
     EndsIn  = { ru="До конца: ", en="Ends in: ", de="Endet in: ", fr="Se termine dans : ", esES="Termina en: ", esMX="Termina en: ", itIT="Termina tra: ", koKR="종료까지: ", zh="结束于：", zhTW="結束於：" },
     Waiting = { ru="Ждем нового респа...", en="Waiting for next spawn...", de="Warten auf nächsten Spawn...", fr="En attente du prochain spawn...", esES="Esperando la siguiente aparición...", esMX="Esperando la siguiente aparición...", itIT="In attesa del prossimo spawn...", koKR="다음 생성 대기 중...", zh="等待下次刷新...", zhTW="等待下次刷新..." },
+    OutOfSync = { ru="Вне зоны - Войдите снова для обновления", en="Out of Sync - Re-enter zone to update", de="Nicht synchronisiert - Zone erneut betreten", fr="Désynchronisé - Revenez dans la zone", esES="Desincronizado - Vuelva a entrar en la zona", esMX="Desincronizado - Vuelva a entrar en la zona", itIT="Non sincronizzato - Rientra nella zona", koKR="동기화 안됨 - 구역에 다시 입장하세요", zh="不同步 - 重新进入区域更新", zhTW="不同步 - 重新進入區域更新" },
+    AlarmSet = { ru="Сигнал установлен для: ", en="Alarm set for: ", de="Alarm gesetzt für: ", fr="Alarme définie pour : ", esES="Alarma establecida para: ", esMX="Alarma establecida para: ", itIT="Allarme impostato per: ", koKR="알람 설정: ", zh="已设置提醒：", zhTW="已設置提醒：" },
+    AlarmCleared = { ru="Сигнал снят для: ", en="Alarm cleared for: ", de="Alarm gelöscht für: ", fr="Alarme supprimée pour : ", esES="Alarma eliminada para: ", esMX="Alarma eliminada para: ", itIT="Allarme rimosso per: ", koKR="알람 해제: ", zh="已取消提醒：", zhTW="已取消提醒：" },
+    AlarmNotif = { ru=" скоро появится!", en=" spawning soon!", de=" spawnt bald!", fr=" apparaît bientôt !", esES=" aparecerá pronto!", esMX=" aparecerá pronto!", itIT=" sta per apparire!", koKR=" 곧 등장!", zh="即将刷新！", zhTW="即將刷新！" },
 }
 
 PrePathData.RARES = {
@@ -102,8 +107,9 @@ PrePathFrame.cycleStartTime = nil
 PrePathFrame.pollTicker = nil
 PrePathFrame.waitingForNewCycle = false
 PrePathFrame.chatTriggerTime = nil
-PrePathFrame.timersSynced = false 
+PrePathFrame.timersSynced = false
 PrePathFrame.hasDetectedInitialBoss = false
+PrePathFrame.alarmNotified = {}
 
 ------------------------------------------------------------
 -- UTILS
@@ -395,9 +401,44 @@ for index, data in ipairs(PrePathData.RARES) do
     row:SetSize(400, 20)
     row:SetPoint("TOPLEFT", 20, yOffset)
 
+    row.statusIcon = row:CreateTexture(nil, "OVERLAY")
+    row.statusIcon:SetSize(14, 14)
+    row.statusIcon:SetPoint("LEFT", 5, 0)
+
+    row.alarmButton = CreateFrame("Button", nil, row)
+    row.alarmButton:SetSize(14, 14)
+    row.alarmButton:SetPoint("LEFT", 21, 0)
+    row.alarmButton:SetNormalTexture("Interface\\Buttons\\UI-GuildButton-MOTD-Up")
+    row.alarmButton:SetScript("OnClick", function()
+        local idx = row.rareIndex
+        if not idx then return end
+
+        PrePathDB.Alarms = PrePathDB.Alarms or {}
+
+        local localeKey = GetLocaleString()
+        local rareName = row.rareData and row.rareData.name[localeKey] or "Unknown"
+
+        if PrePathDB.Alarms[idx] then
+            PrePathDB.Alarms[idx] = nil
+            print("|cffFF0000Pre-Patch|r: Alarm cleared for " .. rareName)
+        else
+            PrePathDB.Alarms[idx] = true
+            print("|cff00FF00Pre-Patch|r: Alarm set for " .. rareName)
+        end
+        PrePathFrame:UpdateRows()
+    end)
+    row.alarmButton:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:SetText("Click to toggle alarm", 1, 1, 1)
+        GameTooltip:Show()
+    end)
+    row.alarmButton:SetScript("OnLeave", function()
+        GameTooltip:Hide()
+    end)
+
     row.name = row:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    row.name:SetSize(215, 20)
-    row.name:SetPoint("LEFT", 5, 0)
+    row.name:SetSize(185, 20)
+    row.name:SetPoint("LEFT", 38, 0)
     row.name:SetJustifyH("LEFT")
     row.name:SetWordWrap(false)
 
@@ -510,16 +551,40 @@ function PrePathFrame:UpdateRows()
             local data = rareInfo.data
             local originalIndex = rareInfo.index
 
-            -- Update row data bindings
             row.rareData = data
             row.rareIndex = originalIndex
 
-            if originalIndex == self.activeIndex then
-                row.name:SetTextColor(1, 1, 0) -- Yellow for active
-            elseif self.criteriaCompleted[data.criteriaID] then
-                row.name:SetTextColor(0, 1, 0) -- Green for completed
+            if data.criteriaID and self.criteriaCompleted[data.criteriaID] then
+                row.statusIcon:SetTexture("Interface\\RaidFrame\\ReadyCheck-Ready")
+                row.statusIcon:Show()
+            elseif data.criteriaID then
+                row.statusIcon:SetTexture("Interface\\RaidFrame\\ReadyCheck-NotReady")
+                row.statusIcon:Show()
             else
-                row.name:SetTextColor(1, 1, 1) -- White by default
+                row.statusIcon:Hide()
+            end
+
+            PrePathDB.Alarms = PrePathDB.Alarms or {}
+            if data.noTimer then
+                row.alarmButton:Hide()
+            else
+                row.alarmButton:Show()
+                local tex = row.alarmButton:GetNormalTexture()
+                if tex then
+                    if PrePathDB.Alarms[originalIndex] then
+                        tex:SetDesaturated(false)
+                    else
+                        tex:SetDesaturated(true)
+                    end
+                end
+            end
+
+            if originalIndex == self.activeIndex then
+                row.name:SetTextColor(1, 1, 0)
+            elseif self.criteriaCompleted[data.criteriaID] then
+                row.name:SetTextColor(0, 1, 0)
+            else
+                row.name:SetTextColor(1, 1, 1)
             end
 
             local timeToSpawn = rareInfo.timeToSpawn
@@ -674,7 +739,6 @@ C_Timer.NewTicker(1, function()
     local currencyInfo = C_CurrencyInfo.GetCurrencyInfo(PrePathData.CURRENCY_ID)
     currencyText:SetText(currencyInfo and currencyInfo.quantity or 0)
 
-    -- Update mini-panel button with currency number
     local qty = currencyInfo and currencyInfo.quantity or 0
     toggleBtn:SetText(GetUIText("Title") .. "  " .. qty)
 
@@ -692,15 +756,29 @@ C_Timer.NewTicker(1, function()
     local latestBossIdx = PrePathFrame:FindLatestActiveIndex()
     if latestBossIdx then
         if PrePathFrame.activeIndex ~= latestBossIdx then
-            if not PrePathFrame.hasDetectedInitialBoss then
-                PrePathFrame.timersSynced = false
-                PrePathFrame.hasDetectedInitialBoss = true
-            else
-                PrePathFrame.timersSynced = true
-            end
-
             PrePathFrame.activeIndex = latestBossIdx
             PrePathFrame.cycleStartTime = GetTime()
+            PrePathFrame.timersSynced = true
+            PrePathFrame.hasDetectedInitialBoss = true
+        end
+    end
+
+    PrePathDB.Alarms = PrePathDB.Alarms or {}
+    for idx, enabled in pairs(PrePathDB.Alarms) do
+        if enabled and not PrePathFrame.alarmNotified[idx] then
+            local timeToSpawn = PrePathFrame:GetTimeToSpawn(idx)
+            if timeToSpawn > 0 and timeToSpawn <= 30 and timeToSpawn < 999998 then
+                local data = PrePathData.RARES[idx]
+                if data and not data.noTimer then
+                    local rareName = data.name[localeKey] or data.name.en
+                    RaidNotice_AddMessage(RaidWarningFrame, rareName .. " spawning soon!", ChatTypeInfo["RAID_WARNING"])
+                    PlaySound(SOUNDKIT.RAID_WARNING)
+                    print("|cffFFFF00Pre-Patch Alarm|r: " .. rareName .. " spawning in " .. math.floor(timeToSpawn) .. " seconds!")
+                    PrePathFrame.alarmNotified[idx] = true
+                end
+            elseif timeToSpawn > 60 then
+                PrePathFrame.alarmNotified[idx] = nil
+            end
         end
     end
 
@@ -709,7 +787,7 @@ C_Timer.NewTicker(1, function()
     if PrePathDB.AutoMap and PrePathFrame.activeIndex then
         if not UnitIsDeadOrGhost("player") then
             local activeAliveIdx = PrePathFrame:FindLatestActiveIndex()
-            
+
             local targetWaypointName = nil
             if activeAliveIdx then
                 targetWaypointName = PrePathFrame:SetSmartWaypoint(activeAliveIdx)
